@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>d3 test stuff</title>
+      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <style type="text/css">
+
+      body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color:#444;
+          font-size: 13px
+      }
+      .dot {
+        stroke: #cecece;
+        stroke-width: 1px;
+        cursor: pointer;
+      }
+
+      .toggle {
+        float: left;
+        width: 100px;
+        padding: 10px;
+        margin: 10px;
+        background: #f7f7f7;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .toggle:hover {
+        background: #e7e7e7
+      }
+      .toggle.active {
+        box-shadow: inset 1px 1px 10px #cecece;
+        background: #e7e7e7
+      }
+      #chart {
+        clear: both;
+        position: absolute;
+        z-index: 1;
+      }
+
+      .chart_container{
+        position: relative;
+        clear: both;
+        font-size: 11px;
+      }
+      .lines {
+        position: absolute;
+      }
+
+      .lines div {
+        position: absolute;
+      }
+      .lines span {
+        width: 29px;
+        height: 600px;
+        float: left;
+        border-right: 1px solid #e7e7e7;
+        z-index: 0;
+        position: relative;
+      }
+      .lines span.four_min {
+        border-right: 1px solid red;
+      }
+
+      .lines span p {
+        position: absolute;
+        bottom: -30px;
+        left: 17px;
+        color:#999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toggle active" id="original">Original</div>
+    <div class="toggle" id="corrected">Corrected</div>
+    <div class="chart_container">
+      <div id="chart"></div>
+      <div class="lines">
+          <span><p>3:56</p></span>
+          <span><p>3:57</p></span>
+          <span><p>3:58</p></span>
+          <span><p>3:59</p></span>
+          <span class="four_min"><p>4:00</p></span>
+          <span><p>4:01</p></span>
+          <span><p>4:02</p></span>
+          <span><p>4:03</p></span>
+          <span><p>4:04</p></span>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+      //Width and height
+      var w = 600;
+      var h = 600;
+
+     var   dataset = [
+              [100, 20, " a"], [90, 70, " b"], [80, 120, " c"], [145, 170, " d"], [120, 220, " e"],
+              [110, 270, " f"], [90, 320, " g"], [115, 370, " h"], [150, 420, " i"], [145, 470, " j"]
+              ];
+
+
+
+      //Create SVG element
+      var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+      var dataset2 = [
+      [400,0,100,"#444","100%"],[400,0,100,"#6b98ae","100%"]
+
+      ]
+
+      svg.selectAll("rect")
+        .data(dataset2)
+        .enter()
+        .append("rect")
+        .attr("x",function(d) {
+            return d[0];
+         })
+        .attr("y",function(d) {
+            return d[1];
+         })
+        .attr("width", function(d) {
+            return d[2];
+         })
+        .attr("height", 40)
+        .attr("class", "bar")
+        .attr("fill", function(d){
+          return d[3]
+        })
+
+      svg.selectAll("circle")
+         .data(dataset)
+         .enter()
+         .append("circle")
+
+         .attr("cx", function(d) {
+            return d[0];
+         })
+         .attr("class", "dot")
+         .attr("cy", function(d) {
+            return d[1];
+         })
+         .attr("r", function(d) {
+            return 6
+         })
+
+          .on("mouseover", function(d) {
+          //   var xPosition = parseFloat(d3.select(this).attr("cx"));
+          //   var yPosition = parseFloat(d3.select(this).attr("cy"));
+          // svg.append("text")
+          // .attr("id", "tooltip")
+          // .attr("x", xPosition+20)
+          // .attr("y", yPosition)
+          // .text(d[2])
+          d3.select(this).attr("fill", "#6b98ae");
+          })
+          .on("mouseout", function() {
+              // d3.select("#tooltip").remove();
+              d3.select(this).attr("fill", "black");
+          });
+
+        svg.selectAll("text")
+         .data(dataset2)
+         .enter()
+         .append("text")
+         .text(function(d) {
+            return d[4];
+         })
+         .attr("x", function(d) {
+            return d[0];
+         })
+         .attr("y", function(d) {
+            return d[1]+60;
+         })
+
+         svg.selectAll("text")
+         .data(dataset)
+         .enter()
+         .append("text")
+         .text(function(d) {
+            return d[2];
+         })
+         .attr("x", function(d) {
+            return d[0]+20;
+         })
+         .attr("y", function(d) {
+            return d[1];
+         })
+
+
+
+      d3.selectAll(".toggle")
+        .on("click", function() {
+          d3.selectAll(".toggle").attr("class","toggle")
+          var thisid = d3.select(this).attr("id");
+          d3.select(this).attr("class","toggle active")
+          if(thisid === "corrected" ){
+          //New values for dataset
+
+
+      dataset = [
+              [145, 20, " a"], [150, 70, " b"], [180, 120, " c"], [155, 170, " d"], [160, 220, " e"],
+              [170, 270, " f"], [190, 320, " g"], [155, 370, " h"], [165, 420, " i"], [170, 470, " j"]
+              ];
+
+      dataset2 = [
+        [400,0,100,"#444"],[400,0,60,"#6b98ae"]
+      ]
+
+      svg.selectAll("rect")
+        .data(dataset2)
+        .transition()
+        .attr("x",function(d) {
+            return d[0];
+         })
+        .attr("y",function(d) {
+            return d[1];
+         })
+        .attr("width", function(d) {
+            return d[2];
+         })
+        .attr("height", 40)
+        .attr("class", "bar")
+        .attr("fill", function(d){
+          return d[3]
+        })
+
+         svg.selectAll("circle")
+         .data(dataset)
+         .transition()
+         .attr("cx", function(d) {
+            return d[0];
+         })
+         .attr("cy", function(d) {
+            return d[1];
+         })
+         .attr("r", function(d) {
+            return 6
+         })
+        svg.selectAll("text")
+        .data(dataset)
+        .transition()
+         .text(function(d) {
+            return d[2];
+         })
+         .attr("x", function(d) {
+            return d[0]+20;
+         })
+         .attr("y", function(d) {
+            return d[1];
+         })
+         .on("mouseover", function(d) {
+          //   var xPosition = parseFloat(d3.select(this).attr("cx"));
+          //   var yPosition = parseFloat(d3.select(this).attr("cy"));
+          // svg.append("text")
+          // .attr("id", "tooltip")
+          // .attr("x", xPosition+20)
+          // .attr("y", yPosition)
+          // .text(d[2])
+          d3.select(this).attr("fill", "#6b98ae");
+          })
+          .on("mouseout", function() {
+              // d3.select("#tooltip").remove();
+              d3.select(this).attr("fill", "black");
+          });
+
+
+
+
+      }  else {
+
+
+      dataset = [
+              [100, 20, " a"], [90, 70, " b"], [80, 120, " c"], [145, 170, " d"], [120, 220, " e"],
+              [110, 270, " f"], [90, 320, " g"], [115, 370, " h"], [150, 420, " i"], [145, 470, " j"]
+              ];
+
+      dataset2 = [
+      [400,0,100,"#444"],[400,0,100,"#6b98ae"]
+
+      ]
+
+      svg.selectAll("rect")
+        .data(dataset2)
+        .transition()
+        .attr("x",function(d) {
+            return d[0];
+         })
+        .attr("y",function(d) {
+            return d[1];
+         })
+        .attr("width", function(d) {
+            return d[2];
+         })
+        .attr("height", 40)
+        .attr("class", "bar")
+        .attr("fill", function(d){
+          return d[3]
+        })
+
+         svg.selectAll("circle")
+         .data(dataset)
+         .transition()
+         .attr("cx", function(d) {
+            return d[0];
+         })
+         .attr("cy", function(d) {
+            return d[1];
+         })
+         .attr("r", function(d) {
+            return 6
+         })
+
+        svg.selectAll("text")
+        .data(dataset)
+        .transition()
+         .text(function(d) {
+            return d[2];
+         })
+         .attr("x", function(d) {
+            return d[0]+20;
+         })
+         .attr("y", function(d) {
+            return d[1];
+         })
+         .on("mouseover", function(d) {
+          //   var xPosition = parseFloat(d3.select(this).attr("cx"));
+          //   var yPosition = parseFloat(d3.select(this).attr("cy"));
+          // svg.append("text")
+          // .attr("id", "tooltip")
+          // .attr("x", xPosition+20)
+          // .attr("y", yPosition)
+          // .text(d[2])
+          d3.select(this).attr("fill", "#6b98ae");
+          })
+          .on("mouseout", function() {
+              // d3.select("#tooltip").remove();
+              d3.select(this).attr("fill", "black");
+          });
+
+
+      }
+
+
+      });
+
+    </script>
+  </body>
+</html>

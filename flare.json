@@ -1,0 +1,78 @@
+{
+ "name": "recalled",
+ "children": [
+  {
+   "name": "Fruit",
+   "children": [
+    {"name":"Citrus Fruits", "value":20},
+    {"name":"Dried Fruit", "value":29},
+    {"name":"Berries", "value":45},
+    {"name":"Melons", "value":28},
+    {"name":"Other Fruit", "value":41}
+   ]
+  },
+  {
+   "name": "Vegetables",
+   "children": [
+    {"name":"Leafy Greens", "value":43},
+    {"name":"Peppers", "value":30},
+    {"name":"Sprouts", "value":37},
+    {"name":"Tomatoes", "value":29},
+    {"name":"Other Vegetables", "value":29},
+    {"name":"Potatoes", "value":28}
+   ]
+  },
+  {
+   "name": "Bread/Cereals",
+   "children": [
+    {"name":"Cereals", "value":15},
+    {"name":"Baked Goods", "value":291},
+    {"name":"Pasta &amp; Noodles", "value":8}
+   ]
+  },
+  {
+   "name": "Meat/Fish",
+   "children": [
+    {"name":"Pork and Ham", "value":56},
+    {"name":"Poultry", "value":147},
+    {"name":"Game Meats", "value":1},
+    {"name":"Fish", "value":188},
+    {"name":"Beef", "value":114},
+    {"name":"Bacon or Other Cured Meats", "value":12},
+    {"name":"Shellfish", "value":19},
+    {"name":"Ground Beef", "value":79}
+   ]
+  },
+  {
+   "name": "Sauces/Condiments",
+   "children": [
+    {"name":"Sauces", "value":20},
+    {"name":"Condiments &amp; Dressings", "value":27}
+   ]
+  },
+  {
+   "name": "Dairy/Eggs/Nuts",
+   "children": [
+    {"name":"Dairy Products", "value":288},
+    {"name":"Eggs", "value":63},
+    {"name":"Nut Products", "value":449}
+   ]
+  },
+  {
+   "name": "Drinks/Sweets",
+   "children": [
+    {"name":"Beverages", "value":34},
+    {"name":"Coffee &amp; Tea", "value":18},
+    {"name":"Candy", "value":139}
+   ]
+  },
+  {
+   "name": "Other",
+   "children": [
+    {"name":"Supplements and Vitamins", "value":97},
+    {"name":"Meat Substitutes", "value":21},
+    {"name":"Infant Food", "value":7}
+   ]
+  }
+ ]
+}

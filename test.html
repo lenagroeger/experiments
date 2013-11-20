@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+    <style type="text/css">
+
+      body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          color:#444;
+          font-size: 13px
+      }
+      .dot, .bar-dot {
+        stroke: #cecece;
+        stroke-width: 1px;
+        cursor: pointer;
+        fill: #444;
+      }
+      .dot.selected, .dot.red.selected{
+        fill:#000;
+      }
+
+      .dot.red{
+        fill:#bc331d;
+      }
+      .voronoi {
+        fill:transparent;
+      }
+
+      #tooltip {
+        fill:#444;
+        color:black;
+        pointer-events: none
+      }
+
+      path {
+        cursor: pointer;
+      }
+      #button-1 {
+        border-radius: 5px 0px 0px 5px;
+        border-right:1px solid transparent
+      }
+      #button-2 {
+        border-radius: 0px 5px 5px 0px;
+        border-left:1px solid transparent;
+        margin-left:-1px;
+      }
+
+      .toggle {
+        float: left;
+      width: 125px;
+      padding: 10px;
+      margin-bottom: 30px;
+      cursor: pointer;
+      border: 1px solid #cecece;
+        transition: all 0.10s ease-in-out;
+      -webkit-transition: all 0.10s ease-in-out;
+      -moz-transition: all 0.10s ease-in-out;
+      -o-transition: all 0.10s ease-in-out;
+      }
+
+      .toggle:hover {
+        border-color: #bbb;
+        box-shadow: 0px 1.5px 1px rgba(0,0,0,0.08);
+      }
+      .toggle.active {
+        background-color: #ddd;
+        border-color: #bbb;
+        box-shadow: inset 0px 0px 7px rgba(0,0,0,0.18);
+        color: #000;
+      }
+
+      #button-1.active {
+        border-right:1px solid #bbb;
+      }
+      #button-2.active {
+        border-left:1px solid #bbb;
+      }
+
+      #chart {
+        clear: both;
+        position: absolute;
+        z-index: 1;
+      }
+
+      .chart_container{
+        clear: both;
+        font-size: 11px;
+        display: block;
+        height: 700px;
+      }
+      .lines {
+        position: absolute;
+      }
+
+      .lines div {
+        position: absolute;
+      }
+      .lines span {
+        width: 29px;
+        height: 400px;
+        float: left;
+        border-right: 1px solid #e7e7e7;
+        z-index: 0;
+        position: relative;
+      }
+      .lines span.four_min {
+        border-right: 1px solid red;
+      }
+
+      .tooltip {
+        fill: #444;
+      }
+
+      .lines span p {
+        position: absolute;
+        bottom: -30px;
+        left: 17px;
+        color:#999;
+      }
+      #runnerchart {
+        width: 300px;
+        margin: 50px auto;
+      }
+    </style>
+<body>
+  <div id="runnerchart">
+
+    <div class="toggle active" data-num="1" id="button-1">Original</div>
+    <div class="toggle" data-num="2" id="button-2">Converted</div>
+    <div class="chart_container">
+      <div id="chart"></div>
+      <div class="lines">
+          <span><p>3:56</p></span>
+          <span><p>3:57</p></span>
+          <span><p>3:58</p></span>
+          <span><p>3:59</p></span>
+          <span class="four_min"><p>4:00</p></span>
+          <span><p>4:01</p></span>
+          <span><p>4:02</p></span>
+          <span><p>4:03</p></span>
+          <span><p>4:04</p></span>
+      </div>
+    </div>
+
+</body>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+
+
+var width = 300
+var  height = 400
+
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(0,30)")
+    .attr("class", "main-box")
+
+var x = d3.scale.linear()
+    .range([0, width])
+    .domain([0,width]);
+
+var y = d3.scale.linear()
+    .range([height, 0])
+    .domain([0,10]);
+
+d3.csv("run.csv", function(data) {
+
+  function getpoints(datanum, num) {
+    var positions = [];
+    datanum.forEach(function(d) {
+      var xnum = "x"+num
+      var ynum = "y"+num
+      positions.push([x(d[xnum]), y(d["y1"])]);
+    });
+    return positions
+  }
+
+
+  function transition(num) {
+    var xnum = "x"+num
+    dots.transition().attr("cx", function(d) {
+        return x(d[xnum]);
+      }).each('end', function() {
+        d3.select(this).classed("red", function(d){
+          return (x(d[xnum]) > 145) ? true : false
+        });
+      });
+      var positions = getpoints(data, num)
+      var polygons = d3.geom.voronoi(positions);
+      d3.selectAll("path")
+      .transition()
+      .attr("d", function(d, i) {
+        v= i+1
+        return "M" + polygons[v].join("L") + "Z";
+      })
+  }
+
+var positions = getpoints(data, 1)
+var path = svg.append("g").selectAll("path");
+var polygons = d3.geom.voronoi(positions)
+
+
+var g = svg.selectAll("g")
+      .data(data)
+      .enter().append("svg:g")
+      .attr("class","container")
+
+  g.append("svg:path")
+      .attr("class","voronoi")
+      .attr("d", function(d, i) { return "M" + polygons[i].join("L") + "Z"; })
+
+  g.append("circle")
+  .attr("class", "dot")
+  .attr("data", function(d) { return d.id; })
+  .attr("cx", function(d) { return x(d.x1); })
+  .attr("cy", function(d) { return y(d.y1); })
+  .attr("r", 5)
+
+  g.append("circle")
+  .attr("class", "bar-dot")
+  .attr("data", function(d) { return d.id; })
+  .attr("cx", function(d) { return x(d.x0); })
+  .attr("cy", function(d) { return y(d.y1); })
+  .attr("r", 5)
+
+  d3.selectAll(".container").on("mouseover", function(d) {
+    var thisdot = d3.select(this).select(".dot")
+    var thisId = thisdot.attr("data")
+    d3.selectAll("[data='"+thisId+"']").classed("selected", true);
+            var xPosition = Math.round(parseFloat(thisdot.attr("cx")));
+            var yPosition = Math.round(parseFloat(thisdot.attr("cy")));
+          svg.append("text")
+          .attr("id", "tooltip")
+          .attr("x", xPosition+15)
+          .attr("y", yPosition+5)
+          .text(d.label)
+
+  })
+  .on("mouseout", function() {
+    d3.select("#tooltip").remove();
+    d3.selectAll(".dot").classed("selected", false);
+  });
+
+  var dots = d3.selectAll(".dot")
+
+  d3.selectAll(".toggle").on("click", function(d) {
+    d3.selectAll(".toggle").attr("class","toggle")
+    var buttonNum = d3.select(this).attr("data-num");
+    d3.select(this).attr("class","toggle active")
+
+    transition(buttonNum)
+
+  });
+
+});
+
+</script>

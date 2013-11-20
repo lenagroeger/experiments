@@ -1,0 +1,306 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "Animal Feed",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "AgglomerativeCluster", "count": 200,"size": 3938},
+      {"name": "CommunityStructure", "count": 200,"size": 3812},
+      {"name": "MergeEdge", "count": 200,"size": 743}
+     ]
+    },
+    {
+     "name": "graph",
+     "children": [
+      {"name": "BetweennessCentrality", "count": 200,"size": 3534},
+      {"name": "LinkDistance", "count": 200,"size": 5731},
+      {"name": "MaxFlowMinCut", "count": 200,"size": 7840},
+      {"name": "SpanningTree", "count": 200,"size": 3416}
+     ]
+    },
+    {
+     "name": "optimization",
+     "children": [
+      {"name": "AspectRatioBanker", "count": 200,"size": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Bacon or Other Cured Meats",
+   "children": [
+    {"name": "Easing", "count": 200,"size": 17010},
+    {"name": "FunctionSequence", "count": 200,"size": 5842},
+    {
+     "name": "interpolate",
+     "children": [
+      {"name": "ArrayInterpolator", "count": 200,"size": 1983},
+      {"name": "ColorInterpolator", "count": 200,"size": 2047},
+      {"name": "DateInterpolator", "count": 200,"size": 1375},
+      {"name": "PointInterpolator", "count": 200,"size": 1675},
+      {"name": "RectangleInterpolator", "count": 200,"size": 2042}
+     ]
+    },
+    {"name": "ISchedulable", "count": 200,"size": 1041},
+    {"name": "Parallel", "count": 200,"size": 5176},
+    {"name": "Pause", "count": 200,"size": 449},
+
+    {"name": "Tween", "count": 200,"size": 6006}
+   ]
+  },
+  {
+   "name": "Baked Goods",
+   "children": [
+    {
+     "name": "converters",
+     "children": [
+      {"name": "Converters", "count": 200,"size": 721},
+      {"name": "DelimitedTextConverter", "count": 200,"size": 4294},
+      {"name": "GraphMLConverter", "count": 200,"size": 9800},
+      {"name": "IDataConverter", "count": 200,"size": 1314},
+      {"name": "JSONConverter", "count": 200,"size": 2220}
+     ]
+    },
+    {"name": "DataField", "count": 200,"size": 1759},
+    {"name": "DataSchema", "count": 200,"size": 2165},
+    {"name": "DataSet", "count": 200,"size": 586},
+    {"name": "DataSource", "count": 200,"size": 3331},
+    {"name": "DataTable", "count": 200,"size": 772},
+    {"name": "DataUtil", "count": 200,"size": 3322}
+   ]
+  },
+  {
+   "name": "Beef",
+   "children": [
+    {"name": "DirtySprite", "count": 200,"size": 8833},
+    {"name": "LineSprite", "count": 200,"size": 1732},
+    {"name": "RectSprite", "count": 200,"size": 3623},
+    {"name": "TextSprite", "count": 200,"size": 10066}
+   ]
+  },
+  {
+   "name": "Beverages",
+   "children": [
+    {"name": "FlareVis", "count": 200,"size": 4116}
+   ]
+  },
+  {
+   "name": "Candy",
+   "children": [
+    {"name": "DragForce", "count": 200,"size": 1082},
+    {"name": "GravityForce", "count": 200,"size": 1336},
+
+    {"name": "Spring", "count": 200,"size": 2213},
+    {"name": "SpringForce", "count": 200,"size": 1681}
+   ]
+  },
+  {
+   "name": "Cereals",
+   "children": [
+    {"name": "AggregateExpression", "count": 200,"size": 1616},
+    {"name": "And", "count": 200,"size": 1027},
+    {"name": "Arithmetic", "count": 200,"size": 3891},
+
+    {"name": "Match", "count": 200,"size": 3748},
+    {"name": "Maximum", "count": 200,"size": 843},
+    {
+     "name": "methods",
+     "children": [
+      {"name": "add", "count": 200,"size": 593},
+      {"name": "and", "count": 200,"size": 330},
+      {"name": "average", "count": 200,"size": 287},
+      {"name": "count", "count": 200,"size": 277},
+      {"name": "distinct", "count": 200,"size": 292},
+      {"name": "div", "count": 200,"size": 595},
+      {"name": "eq", "count": 200,"size": 594},
+      {"name": "fn", "count": 200,"size": 460},
+      {"name": "update", "count": 200,"size": 307},
+      {"name": "variance", "count": 200,"size": 335},
+      {"name": "where", "count": 200,"size": 299},
+      {"name": "xor", "count": 200,"size": 354},
+      {"name": "_", "count": 200,"size": 264}
+     ]
+    },
+    {"name": "Minimum", "count": 200,"size": 843},
+    {"name": "Not", "count": 200,"size": 1554},
+    {"name": "Or", "count": 200,"size": 970},
+    {"name": "Query", "count": 200,"size": 13896},
+    {"name": "Range", "count": 200,"size": 1594},
+    {"name": "StringUtil", "count": 200,"size": 4130},
+    {"name": "Sum", "count": 200,"size": 791},
+    {"name": "Variable", "count": 200,"size": 1124},
+    {"name": "Variance", "count": 200,"size": 1876},
+    {"name": "Xor", "count": 200,"size": 1101}
+   ]
+  },
+  {
+   "name": "Citrus Fruits",
+   "children": [
+    {"name": "IScaleMap", "count": 200,"size": 2105},
+    {"name": "LinearScale", "count": 200,"size": 1316},
+
+    {"name": "TimeScale", "count": 200,"size": 5833}
+   ]
+  },
+  {
+   "name": "Coffee",
+   "children": [
+    {"name": "Arrays", "count": 200,"size": 8258},
+    {"name": "Colors", "count": 200,"size": 10001},
+    {"name": "Dates", "count": 200,"size": 8217},
+    {"name": "Displays", "count": 200,"size": 12555},
+    {"name": "Filter", "count": 200,"size": 2324},
+    {"name": "Geometry", "count": 200,"size": 10993},
+    {
+     "name": "heap",
+     "children": [
+      {"name": "FibonacciHeap", "count": 200,"size": 9354},
+      {"name": "HeapNode", "count": 200,"size": 1233}
+     ]
+    },
+    {"name": "IEvaluable", "count": 200,"size": 335},
+    {"name": "IPredicate", "count": 200,"size": 383},
+    {"name": "IValueProxy", "count": 200,"size": 874},
+    {
+     "name": "math",
+     "children": [
+      {"name": "DenseMatrix", "count": 200,"size": 3165},
+      {"name": "IMatrix", "count": 200,"size": 2815},
+      {"name": "SparseMatrix", "count": 200,"size": 3366}
+     ]
+    },
+    {"name": "Maths", "count": 200,"size": 17705},
+    {"name": "Orientation", "count": 200,"size": 1486},
+    {
+     "name": "palette",
+     "children": [
+      {"name": "ColorPalette", "count": 200,"size": 6367},
+      {"name": "Palette", "count": 200,"size": 1229},
+      {"name": "ShapePalette", "count": 200,"size": 2059},
+      {"name": "SizePalette", "count": 200,"size": 2291}
+     ]
+    },
+    {"name": "Property", "count": 200,"size": 5559},
+    {"name": "Shapes", "count": 200,"size": 19118},
+    {"name": "Sort", "count": 200,"size": 6887},
+    {"name": "Stats", "count": 200,"size": 6557},
+    {"name": "Strings", "count": 200,"size": 22026}
+   ]
+  },
+  {
+   "name": "Condiments",
+   "children": [
+    {
+     "name": "axis",
+     "children": [
+      {"name": "Axes", "count": 200,"size": 1302},
+      {"name": "AxisLabel", "count": 200,"size": 636},
+      {"name": "CartesianAxes", "count": 200,"size": 6703}
+     ]
+    },
+    {
+     "name": "controls",
+     "children": [
+      {"name": "AnchorControl", "count": 200,"size": 2138},
+      {"name": "ClickControl", "count": 200,"size": 3824},
+      {"name": "Control", "count": 200,"size": 1353},
+
+      {"name": "TooltipControl", "count": 200,"size": 8435}
+     ]
+    },
+    {
+     "name": "data",
+     "children": [
+      {"name": "Data", "count": 200,"size": 20544},
+      {"name": "DataList", "count": 200,"size": 19788},
+      {"name": "DataSprite", "count": 200,"size": 10349},
+      {"name": "EdgeSprite", "count": 200,"size": 3301},
+      {"name": "NodeSprite", "count": 200,"size": 19382},
+      {
+       "name": "render",
+       "children": [
+        {"name": "ArrowType", "count": 200,"size": 698},
+        {"name": "EdgeRenderer", "count": 200,"size": 5569},
+        {"name": "IRenderer", "count": 200,"size": 353},
+        {"name": "ShapeRenderer", "count": 200,"size": 2247}
+       ]
+      },
+      {"name": "ScaleBinding", "count": 200,"size": 11275},
+      {"name": "Tree", "count": 200,"size": 7147},
+      {"name": "TreeBuilder", "count": 200,"size": 9930}
+     ]
+    },
+    {
+     "name": "events",
+     "children": [
+      {"name": "DataEvent", "count": 200,"size": 2313},
+      {"name": "SelectionEvent", "count": 200,"size": 1880},
+      {"name": "TooltipEvent", "count": 200,"size": 1701},
+      {"name": "VisualizationEvent", "count": 200,"size": 1117}
+     ]
+    },
+    {
+     "name": "legend",
+     "children": [
+      {"name": "Legend", "count": 200,"size": 20859},
+      {"name": "LegendItem", "count": 200,"size": 4614},
+      {"name": "LegendRange", "count": 200,"size": 10530}
+     ]
+    },
+    {
+     "name": "operator",
+     "children": [
+      {
+       "name": "distortion",
+       "children": [
+        {"name": "BifocalDistortion", "count": 200,"size": 4461},
+        {"name": "Distortion", "count": 200,"size": 6314},
+        {"name": "FisheyeDistortion", "count": 200,"size": 3444}
+       ]
+      },
+      {
+       "name": "encoder",
+       "children": [
+        {"name": "ColorEncoder", "count": 200,"size": 3179},
+        {"name": "Encoder", "count": 200,"size": 4060},
+        {"name": "PropertyEncoder", "count": 200,"size": 4138},
+        {"name": "SizeEncoder", "count": 200,"size": 1830}
+       ]
+      },
+      {
+       "name": "filter",
+       "children": [
+        {"name": "FisheyeTreeFilter", "count": 200,"size": 5219},
+        {"name": "GraphDistanceFilter", "count": 200,"size": 3165},
+        {"name": "VisibilityFilter", "count": 200,"size": 3509}
+       ]
+      },
+      {"name": "IOperator", "count": 200,"size": 1286},
+      {
+       "name": "label",
+       "children": [
+        {"name": "Labeler", "count": 200,"size": 9956},
+        {"name": "RadialLabeler", "count": 200,"size": 3899},
+        {"name": "StackedAreaLabeler", "count": 200,"size": 3202}
+       ]
+      },
+      {
+       "name": "layout",
+       "children": [
+        {"name": "AxisLayout", "count": 200,"size": 6725},
+        {"name": "BundledEdgeRouter", "count": 200,"size": 3727},
+        {"name": "TreeMapLayout", "count": 200,"size": 9191}
+       ]
+      },
+      {"name": "Operator", "count": 200,"size": 2490},
+      {"name": "SortOperator", "count": 200,"size": 2023}
+     ]
+    },
+    {"name": "Visualization", "count": 200,"size": 16540}
+   ]
+  }
+ ]
+}
